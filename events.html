@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Events | J. R. P Islamic Dawat Committee</title>
+<meta name="description" content="Upcoming and past events organised by J. R. P Islamic Dawat Committee — Islamic discussion sessions, youth programs, quiz competitions, and community gatherings." />
+<meta name="keywords" content="Islamic events, dawah programs, Islamic discussion, youth events, quiz competition, mosque events" />
+<meta property="og:title" content="Events — J. R. P Islamic Dawat Committee" />
+<meta property="og:description" content="Upcoming and past events for the community." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<style>
+  /* ---------- Events Page Specifics ---------- */
+  .filter-bar {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    margin-bottom: 40px;
+  }
+  .filter-bar button {
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    padding: 9px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    font-family: inherit;
+  }
+  .filter-bar button:hover { border-color: var(--gold); color: var(--primary-green); }
+  .filter-bar button.is-active {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+    color: var(--white);
+  }
+
+  /* Badge on event image */
+  .event-badge {
+    position: absolute;
+    top: 14px; right: 14px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .event-badge--upcoming { background: var(--gold); color: var(--dark-green); }
+  .event-badge--past { background: rgba(31, 41, 51, 0.75); }
+
+  .event-card__actions {
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .event-card__actions .btn { font-size: 0.85rem; padding: 10px 18px; }
+
+  .btn--disabled {
+    background: #f1f3f2;
+    color: var(--text-muted);
+    cursor: not-allowed;
+    border-color: var(--border);
+    pointer-events: none;
+  }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--light-bg);
+    border-radius: var(--radius-lg);
+    border: 1px dashed var(--border);
+    grid-column: 1 / -1;
+  }
+  .empty-state p:first-child {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--dark-green);
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  /* Detail view */
+  #eventDetail { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  #eventDetail.is-open { max-height: 2000px; }
+  .event-detail {
+    background: var(--white);
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 48px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+  .event-detail__close {
+    position: absolute;
+    top: 14px; right: 14px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow);
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--dark-green);
+    z-index: 2;
+    transition: all var(--transition);
+  }
+  .event-detail__close:hover { background: var(--dark-green); color: var(--white); }
+
+  .event-detail__media {
+    aspect-ratio: 21 / 9;
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    overflow: hidden;
+  }
+  .event-detail__media img { width: 100%; height: 100%; object-fit: cover; }
+
+  .event-detail__body { padding: 40px; }
+  .event-detail__body h2 { margin: 14px 0 22px; }
+
+  .event-detail__meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    padding: 22px;
+    background: var(--light-bg);
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+  }
+  .event-detail__meta dt {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .event-detail__meta dd {
+    color: var(--dark-green);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .event-detail__desc { font-size: 1rem; line-height: 1.7; margin-bottom: 28px; }
+  .event-detail__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  @media (max-width: 600px) {
+    .event-detail__body { padding: 24px 20px; }
+    .event-detail__actions .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement" role="region" aria-label="Announcement">
+  Welcome to <strong>J. R. P Islamic Dawat Committee</strong> — Serving the community through knowledge, dawah and beneficial activities.
+</div>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__brand" aria-label="Home">
+      <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+      <span>
+        J. R. P Islamic Dawat Committee
+        <small>Knowledge • Dawah • Community</small>
+      </span>
+    </a>
+    <nav class="navbar__nav" id="primaryNav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="activities.html">Activities</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="resources.html">Islamic Resources</a>
+      <a href="committee.html">Committee</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <a href="contact.html" class="btn btn--primary navbar__cta">Join / Support Us</a>
+    <button class="navbar__toggle" aria-label="Toggle navigation" aria-controls="primaryNav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Events</h1>
+      <p>Gatherings of knowledge, faith, and community — past and upcoming.</p>
+      <div class="breadcrumb"><a href="index.html">Home</a> / Events</div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <span class="eyebrow">Stay Connected</span>
+        <h2>All Events</h2>
+        <p>Browse upcoming programs and revisit past gatherings. Click any event to see full details.</p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar reveal" id="eventFilters" role="group" aria-label="Filter events">
+        <button type="button" data-filter="all" class="is-active" aria-pressed="true">All Events</button>
+        <button type="button" data-filter="upcoming" aria-pressed="false">Upcoming</button>
+        <button type="button" data-filter="past" aria-pressed="false">Past</button>
+      </div>
+
+      <!-- Detail Container (hidden until user opens an event) -->
+      <div id="eventDetail" aria-live="polite"></div>
+
+      <!-- Event Cards Grid -->
+      <div class="grid grid--3" id="eventsContainer"></div>
+
+    </div>
+  </section>
+
+  <!-- Registration Note -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2>Want to register for an event?</h2>
+        <p>Registration for events is handled through our contact channels. Reach out and mention the event you would like to attend, in shaa Allah we'll respond promptly.</p>
+        <div class="btn-group">
+          <a href="contact.html" class="btn btn--gold">Contact Us</a>
+          <a href="gallery.html" class="btn btn--ghost-light">View Gallery</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">
+          <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+          <strong>J. R. P Islamic Dawat Committee</strong>
+        </div>
+        <p>A community-oriented Islamic initiative focused on spreading authentic knowledge, encouraging good character, and serving the local Muslim community.</p>
+        <div class="footer__social">
+          <a href="[YouTube URL]" aria-label="YouTube" target="_blank" rel="noopener">▶</a>
+          <a href="[Facebook URL]" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+          <a href="[WhatsApp URL]" aria-label="WhatsApp" target="_blank" rel="noopener">✆</a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Phone: [Phone Number]</li>
+          <li>Email: [Email Address]</li>
+          <li>Address: [Organization Address]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> J. R. P Islamic Dawat Committee. All Rights Reserved.</span>
+      <span>Designed &amp; Developed with care for <em>J. R. P Islamic Dawat Committee</em></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/events.js"></script>
+</body>
+</html>

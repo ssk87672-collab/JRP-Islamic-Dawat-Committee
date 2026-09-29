@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Islamic Resources | J. R. P Islamic Dawat Committee</title>
+<meta name="description" content="Authentic Islamic resources from J. R. P Islamic Dawat Committee — Qur'an, Hadith, educational articles, interactive quizzes, and trusted links to reliable Islamic platforms." />
+<meta name="keywords" content="Qur'an, Hadith, Islamic articles, Islamic quiz, dawah resources, authentic Islam" />
+<meta property="og:title" content="Islamic Resources — J. R. P Islamic Dawat Committee" />
+<meta property="og:description" content="Qur'an, Hadith, articles, quizzes and trusted Islamic resources." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<style>
+  /* ---------- Reference Notice ---------- */
+  .reference-notice {
+    background: #fff8e6;
+    border: 1px solid var(--gold);
+    border-left: 5px solid var(--gold);
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    margin-bottom: 40px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .reference-notice__icon {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    background: var(--gold);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+  }
+  .reference-notice h3 {
+    font-size: 1rem;
+    color: var(--dark-green);
+    margin-bottom: 6px;
+  }
+  .reference-notice p {
+    font-size: 0.92rem;
+    color: var(--text-dark);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ---------- Resource Cards ---------- */
+  .resource-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .resource-card__tag {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--light-green);
+    color: var(--primary-green);
+    margin-bottom: 14px;
+    align-self: flex-start;
+  }
+  .resource-card__tag--gold {
+    background: rgba(201, 162, 39, 0.15);
+    color: #8b6f12;
+  }
+  .resource-card__ref {
+    background: var(--light-bg);
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: auto;
+    padding-top: 14px;
+    border-left: 3px solid var(--gold);
+    font-style: italic;
+  }
+  .resource-card__ref strong {
+    font-style: normal;
+    color: var(--dark-green);
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 3px;
+  }
+
+  /* ---------- Quiz Preview ---------- */
+  .quiz-preview {
+    background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 56px;
+  }
+  .quiz-preview::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+  .quiz-preview > * { position: relative; }
+  .quiz-preview h2 { color: var(--white); margin-bottom: 12px; }
+  .quiz-preview p { color: rgba(255,255,255,0.85); max-width: 640px; margin-bottom: 26px; }
+
+  @media (max-width: 600px) {
+    .quiz-preview { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement" role="region" aria-label="Announcement">
+  Welcome to <strong>J. R. P Islamic Dawat Committee</strong> — Serving the community through knowledge, dawah and beneficial activities.
+</div>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__brand" aria-label="Home">
+      <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+      <span>
+        J. R. P Islamic Dawat Committee
+        <small>Knowledge • Dawah • Community</small>
+      </span>
+    </a>
+    <nav class="navbar__nav" id="primaryNav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="activities.html">Activities</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="resources.html">Islamic Resources</a>
+      <a href="committee.html">Committee</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <a href="contact.html" class="btn btn--primary navbar__cta">Join / Support Us</a>
+    <button class="navbar__toggle" aria-label="Toggle navigation" aria-controls="primaryNav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Islamic Resources</h1>
+      <p>Authentic knowledge, carefully referenced — a resource for the community.</p>
+      <div class="breadcrumb"><a href="index.html">Home</a> / Islamic Resources</div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Reference Notice (mandatory per content policy) -->
+      <div class="reference-notice reveal" role="note" aria-label="Important notice about references">
+        <div class="reference-notice__icon" aria-hidden="true">!</div>
+        <div>
+          <h3>Important: Authentication of Religious Content</h3>
+          <p>
+            All Qur'anic verses and Hadith published on this page will include their exact reference
+            (Surah &amp; Ayah, or Hadith Collection &amp; Number). We do not publish weak or unverified narrations.
+            Until verified content is added, categories below are marked as placeholders. If you notice any error,
+            please <a href="contact.html" style="color:var(--primary-green);text-decoration:underline;">contact us</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="section-header reveal">
+        <span class="eyebrow">Categories</span>
+        <h2>Browse by Topic</h2>
+        <p>Educational material grounded in the Qur'an and authentic Sunnah.</p>
+      </div>
+
+      <div class="grid grid--3" id="resourcesGrid"></div>
+
+      <!-- Quiz Preview -->
+      <div class="quiz-preview reveal">
+        <span class="eyebrow" style="color:var(--gold);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.85rem;">Interactive Learning</span>
+        <h2 style="margin-top:12px;">Test Your Islamic Knowledge</h2>
+        <p>Our Islamic quiz competitions encourage learning in a fun, healthy way. Take part in the next quiz program and grow your knowledge.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="events.html" class="btn btn--gold">See Quiz Events</a>
+          <a href="contact.html" class="btn btn--ghost-light">Request a Quiz</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2>Have a beneficial resource to share?</h2>
+        <p>If you know of an authentic Islamic resource that would benefit the community, we would be glad to hear from you.</p>
+        <div class="btn-group">
+          <a href="contact.html" class="btn btn--gold">Contact Us</a>
+          <a href="about.html" class="btn btn--ghost-light">About Our Approach</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">
+          <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+          <strong>J. R. P Islamic Dawat Committee</strong>
+        </div>
+        <p>A community-oriented Islamic initiative focused on spreading authentic knowledge, encouraging good character, and serving the local Muslim community.</p>
+        <div class="footer__social">
+          <a href="[YouTube URL]" aria-label="YouTube" target="_blank" rel="noopener">▶</a>
+          <a href="[Facebook URL]" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+          <a href="[WhatsApp URL]" aria-label="WhatsApp" target="_blank" rel="noopener">✆</a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Phone: [Phone Number]</li>
+          <li>Email: [Email Address]</li>
+          <li>Address: [Organization Address]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> J. R. P Islamic Dawat Committee. All Rights Reserved.</span>
+      <span>Designed &amp; Developed with care for <em>J. R. P Islamic Dawat Committee</em></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+(function () {
+  const U = window.JRPUtils;
+  const grid = document.getElementById('resourcesGrid');
+  if (!grid) return;
+
+  const isGold = (cat) => cat === 'Hadith' || cat === "Qur'an";
+
+  grid.innerHTML = resources.map(r => `
+    <article class="card resource-card reveal">
+      <span class="resource-card__tag ${isGold(r.category) ? 'resource-card__tag--gold' : ''}">
+        ${U.escape(r.category)}
+      </span>
+      <h3 style="margin-bottom:10px;">${U.escape(r.title)}</h3>
+      <p style="margin-bottom:16px;">${U.escape(r.description)}</p>
+      ${r.reference
+        ? `<div class="resource-card__ref"><strong>Reference</strong>${U.escape(r.reference)}</div>`
+        : `<div class="resource-card__ref" style="border-left-color:var(--border);"><strong>Note</strong>Content to be added with proper verification.</div>`
+      }
+    </article>
+  `).join('');
+
+  document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-visible');
+  });
+})();
+</script>
+</body>
+</html>

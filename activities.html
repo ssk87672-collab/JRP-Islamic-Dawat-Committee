@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Activities | J. R. P Islamic Dawat Committee</title>
+<meta name="description" content="Explore the activities of J. R. P Islamic Dawat Committee — Islamic discussions, Qur'an & Hadith education, quiz competitions, youth programs, community and mosque initiatives." />
+<meta name="keywords" content="Islamic activities, dawah programs, Qur'an education, Hadith study, youth programs, Islamic quiz, mosque activities" />
+<meta property="og:title" content="Activities — J. R. P Islamic Dawat Committee" />
+<meta property="og:description" content="Islamic discussions, education, youth programs, and community initiatives." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<style>
+  .activity-block {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    align-items: center; padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .activity-block:last-of-type { border-bottom: none; }
+  .activity-block:nth-child(even) .activity-block__visual { order: -1; }
+  .activity-block__visual {
+    aspect-ratio: 4/3; border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--light-green), #fff);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+  }
+  .activity-block__visual::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(11,93,59,0.1) 1px, transparent 0);
+    background-size: 22px 22px; pointer-events: none;
+  }
+  .activity-block__icon {
+    width: 56px; height: 56px; border-radius: var(--radius-sm);
+    background: var(--light-green); color: var(--primary-green);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 16px;
+  }
+  .activity-block__visual .activity-block__icon {
+    margin: 0; width: 88px; height: 88px; font-size: 2.4rem;
+    background: rgba(11,93,59,0.1); position: relative; z-index: 1;
+  }
+  @media (max-width: 880px) {
+    .activity-block { grid-template-columns: 1fr; gap: 24px; }
+    .activity-block:nth-child(even) .activity-block__visual { order: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement" role="region" aria-label="Announcement">
+  Welcome to <strong>J. R. P Islamic Dawat Committee</strong> — Serving the community through knowledge, dawah and beneficial activities.
+</div>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__brand" aria-label="Home">
+      <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+      <span>
+        J. R. P Islamic Dawat Committee
+        <small>Knowledge • Dawah • Community</small>
+      </span>
+    </a>
+    <nav class="navbar__nav" id="primaryNav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="activities.html">Activities</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="resources.html">Islamic Resources</a>
+      <a href="committee.html">Committee</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <a href="contact.html" class="btn btn--primary navbar__cta">Join / Support Us</a>
+    <button class="navbar__toggle" aria-label="Toggle navigation" aria-controls="primaryNav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Our Activities</h1>
+      <p>Educational, spiritual, and community-building efforts carried out with sincerity.</p>
+      <div class="breadcrumb"><a href="index.html">Home</a> / Activities</div>
+    </div>
+  </section>
+
+  <!-- Overview Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">At a Glance</span>
+        <h2>Six areas of service.</h2>
+        <p>Every activity we organise is rooted in a simple goal — to benefit our community, in this life and the next.</p>
+      </div>
+      <div class="grid grid--3" id="activityGrid"></div>
+    </div>
+  </section>
+
+  <!-- Detailed Blocks -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">In Detail</span>
+        <h2>What each activity involves.</h2>
+      </div>
+      <div id="activityDetails"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2>Want to take part?</h2>
+        <p>Join us at our next event, volunteer with a program, or reach out to learn more about how you can be involved.</p>
+        <div class="btn-group">
+          <a href="events.html" class="btn btn--gold">Upcoming Events</a>
+          <a href="contact.html" class="btn btn--ghost-light">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">
+          <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+          <strong>J. R. P Islamic Dawat Committee</strong>
+        </div>
+        <p>A community-oriented Islamic initiative focused on spreading authentic knowledge, encouraging good character, and serving the local Muslim community.</p>
+        <div class="footer__social">
+          <a href="[YouTube URL]" aria-label="YouTube" target="_blank" rel="noopener">▶</a>
+          <a href="[Facebook URL]" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+          <a href="[WhatsApp URL]" aria-label="WhatsApp" target="_blank" rel="noopener">✆</a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Phone: [Phone Number]</li>
+          <li>Email: [Email Address]</li>
+          <li>Address: [Organization Address]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> J. R. P Islamic Dawat Committee. All Rights Reserved.</span>
+      <span>Designed &amp; Developed with care for <em>J. R. P Islamic Dawat Committee</em></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+(function () {
+  const U = window.JRPUtils;
+
+  const iconMap = {
+    book: '📖',
+    quran: '📗',
+    trophy: '🏆',
+    users: '👥',
+    hands: '🤝',
+    mosque: '🕌'
+  };
+
+  // Overview grid
+  const grid = document.getElementById('activityGrid');
+  if (grid) {
+    grid.innerHTML = activities.map(a => `
+      <article class="card reveal">
+        <div class="card__icon" aria-hidden="true" style="font-size:1.4rem;">${iconMap[a.icon] || '●'}</div>
+        <h3>${U.escape(a.title)}</h3>
+        <p>${U.escape(a.short)}</p>
+        <a class="card__link" href="#${U.escape(a.id)}">Learn More →</a>
+      </article>
+    `).join('');
+  }
+
+  // Detailed alternating blocks
+  const details = document.getElementById('activityDetails');
+  if (details) {
+    details.innerHTML = activities.map(a => `
+      <section class="activity-block reveal" id="${U.escape(a.id)}">
+        <div>
+          <div class="activity-block__icon" aria-hidden="true">${iconMap[a.icon] || '●'}</div>
+          <h2 style="font-size:1.6rem;margin-bottom:14px;">${U.escape(a.title)}</h2>
+          <p style="margin-bottom:14px;">${U.escape(a.long)}</p>
+          <p style="font-size:.92rem;">${U.escape(a.short)}</p>
+          <div style="margin-top:22px;">
+            <a href="contact.html" class="btn btn--outline">Get Involved →</a>
+          </div>
+        </div>
+        <div class="activity-block__visual" aria-hidden="true">
+          <div class="activity-block__icon">${iconMap[a.icon] || '●'}</div>
+        </div>
+      </section>
+    `).join('');
+  }
+
+  // Reveal re-check for injected items
+  document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-visible');
+  });
+
+  // Smooth-scroll when navigating to an anchor within this page
+  if (location.hash) {
+    const target = document.querySelector(location.hash);
+    if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+})();
+</script>
+</body>
+</html>

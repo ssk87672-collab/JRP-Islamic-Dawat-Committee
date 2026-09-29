@@ -1,0 +1,65 @@
+/* =========================================================
+   Responsive Styles
+   ========================================================= */
+
+@media (max-width: 1024px) {
+    .grid--4 { grid-template-columns: repeat(2, 1fr); }
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+    .gallery-preview { grid-auto-rows: 140px; }
+}
+
+@media (max-width: 880px) {
+    .section { padding: 64px 0; }
+    .grid--3 { grid-template-columns: repeat(2, 1fr); }
+
+    /* Mobile nav */
+    .navbar__nav {
+        position: fixed;
+        top: 0; right: -100%;
+        height: 100vh;
+        width: min(320px, 85vw);
+        background: var(--white);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 88px 20px 24px;
+        gap: 4px;
+        box-shadow: -8px 0 32px rgba(0,0,0,0.12);
+        transition: right 0.3s ease;
+        overflow-y: auto;
+        z-index: 1100;
+    }
+    .navbar__nav.is-open { right: 0; }
+    .navbar__nav a { padding: 14px 12px; border-radius: var(--radius-sm); }
+    .navbar__cta { display: none; }
+    .navbar__toggle { display: flex; z-index: 1200; }
+    .navbar__toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .navbar__toggle.is-open span:nth-child(2) { opacity: 0; }
+    .navbar__toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(6, 59, 40, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1050;
+    }
+    .nav-overlay.is-open { opacity: 1; visibility: visible; }
+
+    .hero { padding: 72px 0; }
+    .gallery-preview { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; }
+    .gallery-preview .gp-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+}
+
+@media (max-width: 600px) {
+    .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
+    .section { padding: 56px 0; }
+    .hero { padding: 56px 0; }
+    .cta-banner { padding: 40px 22px; }
+    .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer__bottom { flex-direction: column; text-align: center; }
+    .btn { width: 100%; justify-content: center; }
+    .hero__actions { flex-direction: column; }
+    .hero__actions .btn { width: 100%; }
+}

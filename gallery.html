@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gallery | J. R. P Islamic Dawat Committee</title>
+<meta name="description" content="Photo gallery of J. R. P Islamic Dawat Committee — Islamic programs, youth events, quiz competitions, mosque activities and community initiatives." />
+<meta name="keywords" content="Islamic gallery, dawah photos, youth events, quiz competitions, mosque activities, community" />
+<meta property="og:title" content="Gallery — J. R. P Islamic Dawat Committee" />
+<meta property="og:description" content="Moments from our programs and community gatherings." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<style>
+  /* =========================================================
+     Gallery Page
+     ========================================================= */
+
+  /* ---------- Filter Bar (reused from events) ---------- */
+  .filter-bar {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    margin-bottom: 40px;
+  }
+  .filter-bar button {
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    padding: 9px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    font-family: inherit;
+  }
+  .filter-bar button:hover { border-color: var(--gold); color: var(--primary-green); }
+  .filter-bar button.is-active {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+    color: var(--white);
+  }
+
+  /* ---------- Gallery Grid ---------- */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-auto-rows: 260px;
+    gap: 16px;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, var(--light-green), #fff);
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .gallery-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .gallery-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.06); }
+
+  .gallery-item__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(6,59,40,0.85) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 18px;
+    color: var(--white);
+    opacity: 0;
+    transition: opacity var(--transition);
+    text-align: left;
+  }
+  .gallery-item:hover .gallery-item__overlay,
+  .gallery-item:focus-visible .gallery-item__overlay { opacity: 1; }
+  .gallery-item__title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--white);
+  }
+  .gallery-item__cat {
+    font-size: 0.75rem;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+  .gallery-item--missing {
+    background: linear-gradient(135deg, var(--light-green), #fff);
+  }
+  .gallery-item--missing::after {
+    content: "[Image]";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-green);
+    opacity: 0.4;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+
+  /* Two-column span for a premium look on wider screens */
+  @media (min-width: 900px) {
+    .gallery-item:nth-child(7n+1),
+    .gallery-item:nth-child(7n+4) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .lightbox.is-open { opacity: 1; visibility: visible; }
+
+  .lightbox__backdrop {
+    position: absolute; inset: 0;
+    background: rgba(6, 20, 14, 0.92);
+    backdrop-filter: blur(4px);
+  }
+  .lightbox__inner {
+    position: relative;
+    z-index: 1;
+    width: min(100% - 24px, 1100px);
+    max-height: calc(100vh - 48px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox__figure {
+    margin: 0;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 48px);
+    width: 100%;
+  }
+  .lightbox__img {
+    width: 100%;
+    max-height: calc(100vh - 160px);
+    object-fit: contain;
+    background: #111;
+  }
+  .lightbox__caption {
+    padding: 16px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: var(--white);
+  }
+  .lightbox__title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--dark-green);
+    font-size: 1rem;
+  }
+  .lightbox__counter {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .lightbox__btn {
+    position: absolute;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--dark-green);
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: all var(--transition);
+    box-shadow: var(--shadow);
+    font-family: inherit;
+    line-height: 1;
+  }
+  .lightbox__btn:hover { background: var(--gold); color: var(--dark-green); transform: scale(1.06); }
+
+  .lightbox__close { top: -12px; right: -12px; font-size: 1rem; }
+  .lightbox__prev  { left: -12px; top: 50%; transform: translateY(-50%); }
+  .lightbox__next  { right: -12px; top: 50%; transform: translateY(-50%); }
+  .lightbox__prev:hover,
+  .lightbox__next:hover { transform: translateY(-50%) scale(1.06); }
+
+  @media (max-width: 640px) {
+    .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 240px; }
+    .gallery-item__overlay { opacity: 1; background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(6,59,40,0.85) 100%); }
+    .lightbox__prev { left: 8px; }
+    .lightbox__next { right: 8px; }
+    .lightbox__close { top: 8px; right: 8px; }
+    .lightbox__btn { width: 42px; height: 42px; font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement" role="region" aria-label="Announcement">
+  Welcome to <strong>J. R. P Islamic Dawat Committee</strong> — Serving the community through knowledge, dawah and beneficial activities.
+</div>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__brand" aria-label="Home">
+      <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+      <span>
+        J. R. P Islamic Dawat Committee
+        <small>Knowledge • Dawah • Community</small>
+      </span>
+    </a>
+    <nav class="navbar__nav" id="primaryNav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="activities.html">Activities</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="resources.html">Islamic Resources</a>
+      <a href="committee.html">Committee</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <a href="contact.html" class="btn btn--primary navbar__cta">Join / Support Us</a>
+    <button class="navbar__toggle" aria-label="Toggle navigation" aria-controls="primaryNav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Gallery</h1>
+      <p>Moments from our programs, gatherings, and community initiatives.</p>
+      <div class="breadcrumb"><a href="index.html">Home</a> / Gallery</div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <span class="eyebrow">Our Moments</span>
+        <h2>Through the Lens</h2>
+        <p>Browse photos by category. Tap any image to view it full size — use ← → keys or swipe to navigate.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="filter-bar reveal" id="galleryFilters" role="group" aria-label="Filter gallery">
+        <button type="button" data-filter="all" class="is-active" aria-pressed="true">All</button>
+        <button type="button" data-filter="programs" aria-pressed="false">Islamic Programs</button>
+        <button type="button" data-filter="youth" aria-pressed="false">Youth Events</button>
+        <button type="button" data-filter="quiz" aria-pressed="false">Quiz Competitions</button>
+        <button type="button" data-filter="mosque" aria-pressed="false">Mosque Activities</button>
+        <button type="button" data-filter="community" aria-pressed="false">Community Activities</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="gallery-grid" id="galleryGrid"></div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2>Have photos from our events?</h2>
+        <p>If you have photos you would like to share with the community, please reach out — we would be glad to feature them here, with your permission.</p>
+        <div class="btn-group">
+          <a href="contact.html" class="btn btn--gold">Get in Touch</a>
+          <a href="events.html" class="btn btn--ghost-light">Browse Events</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">
+          <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+          <strong>J. R. P Islamic Dawat Committee</strong>
+        </div>
+        <p>A community-oriented Islamic initiative focused on spreading authentic knowledge, encouraging good character, and serving the local Muslim community.</p>
+        <div class="footer__social">
+          <a href="[YouTube URL]" aria-label="YouTube" target="_blank" rel="noopener">▶</a>
+          <a href="[Facebook URL]" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+          <a href="[WhatsApp URL]" aria-label="WhatsApp" target="_blank" rel="noopener">✆</a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Phone: [Phone Number]</li>
+          <li>Email: [Email Address]</li>
+          <li>Address: [Organization Address]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> J. R. P Islamic Dawat Committee. All Rights Reserved.</span>
+      <span>Designed &amp; Developed with care for <em>J. R. P Islamic Dawat Committee</em></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/gallery.js"></script>
+</body>
+</html>

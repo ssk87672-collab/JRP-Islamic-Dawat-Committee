@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Us | J. R. P Islamic Dawat Committee</title>
+<meta name="description" content="Get in touch with J. R. P Islamic Dawat Committee — reach out for enquiries, event registration, volunteering, or to support our dawah and community activities." />
+<meta name="keywords" content="contact J. R. P Islamic Dawat Committee, dawah enquiry, volunteer, support, donate" />
+<meta property="og:title" content="Contact Us — J. R. P Islamic Dawat Committee" />
+<meta property="og:description" content="Reach out, volunteer, or support our activities." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<style>
+  /* ---------- Contact Info Cards ---------- */
+  .contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+  .contact-info {
+    display: flex;
+    gap: 14px;
+    padding: 22px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all var(--transition);
+  }
+  .contact-info:hover { border-color: var(--gold); box-shadow: var(--shadow); }
+  .contact-info__icon {
+    width: 46px; height: 46px; flex-shrink: 0;
+    background: var(--light-green);
+    color: var(--primary-green);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .contact-info h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .contact-info p {
+    font-size: 0.95rem;
+    color: var(--dark-green);
+    font-weight: 600;
+    word-break: break-word;
+  }
+  .contact-info small {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    display: block;
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* ---------- Two Column Layout ---------- */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: flex-start;
+  }
+  @media (max-width: 880px) {
+    .contact-layout { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ---------- Form ---------- */
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--dark-green);
+    margin-bottom: 8px;
+  }
+  .form-group label .required { color: #c0392b; margin-left: 3px; }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 13px 16px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 4px rgba(11, 93, 59, 0.08);
+  }
+  .form-group textarea { resize: vertical; min-height: 130px; }
+  .form-group.has-error input,
+  .form-group.has-error textarea,
+  .form-group.has-error select { border-color: #c0392b; }
+  .form-error {
+    display: none;
+    font-size: 0.82rem;
+    color: #c0392b;
+    margin-top: 6px;
+  }
+  .form-group.has-error .form-error { display: block; }
+
+  .form-status {
+    display: none;
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .form-status.is-success {
+    display: block;
+    background: rgba(11, 93, 59, 0.08);
+    border: 1px solid rgba(11, 93, 59, 0.25);
+    color: var(--primary-green);
+  }
+  .form-status.is-error {
+    display: block;
+    background: rgba(192, 57, 43, 0.08);
+    border: 1px solid rgba(192, 57, 43, 0.25);
+    color: #c0392b;
+  }
+  .form-note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: var(--light-bg);
+    border-radius: var(--radius-sm);
+    line-height: 1.5;
+  }
+
+  /* ---------- Map Placeholder ---------- */
+  .map-placeholder {
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--light-green), #fff);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--primary-green);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    padding: 24px;
+    position: relative;
+  }
+  .map-placeholder::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(11,93,59,0.1) 1px, transparent 0);
+    background-size: 20px 20px;
+    border-radius: var(--radius);
+    pointer-events: none;
+  }
+  .map-placeholder span { position: relative; opacity: 0.65; font-size: 0.95rem; }
+
+  /* ---------- Support / Donate Section ---------- */
+  .support-section {
+    background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+    color: var(--white);
+    padding: 72px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .support-section::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 0);
+    background-size: 26px 26px;
+  }
+  .support-section > .container { position: relative; }
+  .support-section h2 { color: var(--white); }
+  .support-section > .container > p { color: rgba(255,255,255,0.85); max-width: 640px; margin: 12px auto 40px; text-align: center; }
+
+  .donate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .donate-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: all var(--transition);
+  }
+  .donate-card:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold); }
+  .donate-card h4 {
+    color: var(--gold-light);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .donate-card p {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    word-break: break-word;
+    line-height: 1.4;
+  }
+  .donate-card small {
+    display: block;
+    margin-top: 8px;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  .donate-qr {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .donate-qr__img {
+    width: 140px; height: 140px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-green);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    padding: 8px;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .donate-qr__text { flex: 1; min-width: 200px; }
+  .donate-qr__text h4 { color: var(--white); font-size: 1.05rem; margin-bottom: 6px; }
+  .donate-qr__text p { color: rgba(255,255,255,0.75); font-size: 0.9rem; margin: 0; }
+
+  .donate-disclaimer {
+    margin-top: 32px;
+    padding: 18px 22px;
+    background: rgba(201, 162, 39, 0.12);
+    border: 1px solid rgba(201, 162, 39, 0.35);
+    border-radius: var(--radius);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .donate-disclaimer__icon {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    background: var(--gold);
+    color: var(--dark-green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .donate-disclaimer p {
+    color: var(--white);
+    font-size: 0.88rem;
+    margin: 0;
+    line-height: 1.55;
+  }
+  .donate-disclaimer strong { color: var(--gold-light); }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement" role="region" aria-label="Announcement">
+  Welcome to <strong>J. R. P Islamic Dawat Committee</strong> — Serving the community through knowledge, dawah and beneficial activities.
+</div>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__brand" aria-label="Home">
+      <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+      <span>
+        J. R. P Islamic Dawat Committee
+        <small>Knowledge • Dawah • Community</small>
+      </span>
+    </a>
+    <nav class="navbar__nav" id="primaryNav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="activities.html">Activities</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="resources.html">Islamic Resources</a>
+      <a href="committee.html">Committee</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <a href="contact.html" class="btn btn--primary navbar__cta">Join / Support Us</a>
+    <button class="navbar__toggle" aria-label="Toggle navigation" aria-controls="primaryNav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>We would be glad to hear from you — for enquiries, registrations, volunteering, or support.</p>
+      <div class="breadcrumb"><a href="index.html">Home</a> / Contact Us</div>
+    </div>
+  </section>
+
+  <!-- Contact Info + Form -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Info Cards -->
+      <div class="contact-info-grid reveal">
+        <div class="contact-info">
+          <div class="contact-info__icon" aria-hidden="true">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p>[Phone Number]</p>
+            <small>Placeholder — replace with real number</small>
+          </div>
+        </div>
+        <div class="contact-info">
+          <div class="contact-info__icon" aria-hidden="true">✆</div>
+          <div>
+            <h4>WhatsApp</h4>
+            <p>[WhatsApp Number]</p>
+            <small>Placeholder — replace with real number</small>
+          </div>
+        </div>
+        <div class="contact-info">
+          <div class="contact-info__icon" aria-hidden="true">✉</div>
+          <div>
+            <h4>Email</h4>
+            <p>[Email Address]</p>
+            <small>Placeholder — replace with real address</small>
+          </div>
+        </div>
+        <div class="contact-info">
+          <div class="contact-info__icon" aria-hidden="true">📍</div>
+          <div>
+            <h4>Address</h4>
+            <p>[Organization Address]</p>
+            <small>Placeholder — replace with real address</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layout: Form + Map -->
+      <div class="contact-layout">
+
+        <!-- Contact Form -->
+        <div class="reveal">
+          <h2 style="margin-bottom:14px;">Send Us a Message</h2>
+          <p style="margin-bottom:28px;">Fill in the form below and we will get back to you as soon as possible, in shaa Allah.</p>
+
+          <!-- Form Status Area -->
+          <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="name">Your Name <span class="required">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+              <span class="form-error" id="err-name">Please enter your name (at least 2 characters).</span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactDetail">Phone or Email <span class="required">*</span></label>
+              <input type="text" id="contactDetail" name="contactDetail" autocomplete="email" required />
+              <span class="form-error" id="err-contactDetail">Please enter a valid phone number or email address.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject <span class="required">*</span></label>
+              <select id="subject" name="subject" required>
+                <option value="">— Select a subject —</option>
+                <option value="general">General Enquiry</option>
+                <option value="event">Event Registration</option>
+                <option value="volunteer">Volunteer with Us</option>
+                <option value="support">Support / Donate</option>
+                <option value="feedback">Feedback or Suggestion</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="form-error" id="err-subject">Please choose a subject.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message <span class="required">*</span></label>
+              <textarea id="message" name="message" required></textarea>
+              <span class="form-error" id="err-message">Please enter a message (at least 10 characters).</span>
+            </div>
+
+            <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">
+              Send Message
+            </button>
+
+            <p class="form-note" role="note">
+              <strong>Note:</strong> This form is currently frontend-only and does not yet send email.
+              To receive messages, please connect it to a backend or an email service (e.g. Formspree, EmailJS).
+              Until then, please use the phone, WhatsApp or email above.
+            </p>
+          </form>
+        </div>
+
+        <!-- Map / Location -->
+        <div class="reveal">
+          <h2 style="margin-bottom:14px;">Find Us</h2>
+          <p style="margin-bottom:20px;">Our programs are currently based at the locations below. A map will be embedded here once the address is confirmed.</p>
+          <div class="map-placeholder" role="img" aria-label="Map placeholder">
+            <span>[Map will appear here]<br />Replace with Google Maps iframe once address is confirmed</span>
+          </div>
+
+          <div style="margin-top:24px;padding:20px;background:var(--light-bg);border-radius:var(--radius);">
+            <h4 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:10px;font-family:'Poppins',sans-serif;">Primary Venue</h4>
+            <p style="color:var(--dark-green);font-weight:600;margin-bottom:4px;">Joyrampur Jame Mosque</p>
+            <p style="font-size:.88rem;">[Full Address Placeholder]</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Support / Donate Section -->
+  <section class="support-section" id="support">
+    <div class="container">
+      <h2 class="text-center">Support Our Dawah &amp; Community Activities</h2>
+      <p class="text-center">Your support helps us continue organising educational programs, youth initiatives, and beneficial community activities — for the sake of Allah, and for the benefit of all.</p>
+
+      <div class="donate-grid">
+        <div class="donate-card">
+          <h4>UPI</h4>
+          <p>[UPI ID]</p>
+          <small>Placeholder — verify before publishing</small>
+        </div>
+        <div class="donate-card">
+          <h4>Account Name</h4>
+          <p>[Account Name]</p>
+          <small>Placeholder</small>
+        </div>
+        <div class="donate-card">
+          <h4>Bank Account</h4>
+          <p>[Bank Account Number]</p>
+          <small>Placeholder</small>
+        </div>
+        <div class="donate-card">
+          <h4>IFSC Code</h4>
+          <p>[IFSC Code]</p>
+          <small>Placeholder</small>
+        </div>
+        <div class="donate-card">
+          <h4>Bank Name</h4>
+          <p>[Bank Name]</p>
+          <small>Placeholder</small>
+        </div>
+      </div>
+
+      <div class="donate-qr">
+        <div class="donate-qr__img" role="img" aria-label="QR code placeholder">
+          [QR Code<br />Placeholder]
+        </div>
+        <div class="donate-qr__text">
+          <h4>Scan to Support</h4>
+          <p>A QR code will be placed here once the official payment channel is confirmed.</p>
+        </div>
+      </div>
+
+      <div class="donate-disclaimer" role="note">
+        <div class="donate-disclaimer__icon" aria-hidden="true">!</div>
+        <p>
+          <strong>Important Disclaimer:</strong> All payment details shown above are placeholders.
+          Please <strong>verify the actual UPI ID, bank account details and QR code</strong> with
+          J. R. P Islamic Dawat Committee's authorised members before making any contribution.
+          Do not send funds to unverified accounts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">
+          <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+          <strong>J. R. P Islamic Dawat Committee</strong>
+        </div>
+        <p>A community-oriented Islamic initiative focused on spreading authentic knowledge, encouraging good character, and serving the local Muslim community.</p>
+        <div class="footer__social">
+          <a href="[YouTube URL]" aria-label="YouTube" target="_blank" rel="noopener">▶</a>
+          <a href="[Facebook URL]" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+          <a href="[WhatsApp URL]" aria-label="WhatsApp" target="_blank" rel="noopener">✆</a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Phone: [Phone Number]</li>
+          <li>Email: [Email Address]</li>
+          <li>Address: [Organization Address]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> J. R. P Islamic Dawat Committee. All Rights Reserved.</span>
+      <span>Designed &amp; Developed with care for <em>J. R. P Islamic Dawat Committee</em></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+/* =========================================================
+   Contact Form — client-side validation & feedback
+   NOTE: This form does NOT send email. It validates, shows
+   a success message, and resets. Connect to a backend or
+   service (Formspree / EmailJS / own API) to enable sending.
+   ========================================================= */
+(function () {
+    'use strict';
+
+    const form = document.getElementById('contactForm');
+    const statusBox = document.getElementById('formStatus');
+    if (!form) return;
+
+    /* ---------- Field validators ---------- */
+    const validators = {
+        name: (v) => v.trim().length >= 2,
+        contactDetail: (v) => {
+            const s = v.trim();
+            const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+            const isPhone = /^[+]?[\d\s().-]{7,20}$/.test(s);
+            return isEmail || isPhone;
+        },
+        subject: (v) => v.trim() !== '',
+        message: (v) => v.trim().length >= 10
+    };
+
+    /* ---------- Show/hide field error ---------- */
+    function setFieldError(fieldName, hasError) {
+        const group = form.querySelector(`#${fieldName}`).closest('.form-group');
+        group.classList.toggle('has-error', hasError);
+    }
+
+    /* ---------- Validate single field ---------- */
+    function validateField(name) {
+        const el = form.querySelector(`#${name}`);
+        if (!el || !validators[name]) return true;
+        const ok = validators[name](el.value);
+        setFieldError(name, !ok);
+        return ok;
+    }
+
+    /* ---------- Validate all fields ---------- */
+    function validateAll() {
+        return Object.keys(validators).map(validateField).every(Boolean);
+    }
+
+    /* ---------- Show status ---------- */
+    function showStatus(type, message) {
+        statusBox.className = 'form-status is-' + type;
+        statusBox.textContent = message;
+        statusBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    function hideStatus() {
+        statusBox.className = 'form-status';
+        statusBox.textContent = '';
+    }
+
+    /* ---------- Live validation on blur ---------- */
+    Object.keys(validators).forEach(name => {
+        const el = form.querySelector(`#${name}`);
+        if (!el) return;
+        el.addEventListener('blur', () => validateField(name));
+        el.addEventListener('input', () => {
+            // Once a field is marked invalid, clear error as soon as it becomes valid
+            if (el.closest('.form-group').classList.contains('has-error')) {
+                validateField(name);
+            }
+        });
+    });
+
+    /* ---------- Submit ---------- */
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        hideStatus();
+
+        if (!validateAll()) {
+            showStatus('error', 'Please correct the highlighted fields and try again.');
+            // Focus first invalid field for accessibility
+            const firstInvalid = form.querySelector('.form-group.has-error input, .form-group.has-error select, .form-group.has-error textarea');
+            if (firstInvalid) firstInvalid.focus();
+            return;
+        }
+
+        // Gather data (no transmission yet)
+        const data = {
+            name: form.querySelector('#name').value.trim(),
+            contact: form.querySelector('#contactDetail').value.trim(),
+            subject: form.querySelector('#subject').value,
+            message: form.querySelector('#message').value.trim(),
+            submittedAt: new Date().toISOString()
+        };
+
+        // TODO: Replace this block with an actual fetch() call to a backend
+        // or a service like Formspree / EmailJS when configured.
+        console.log('[JRP Contact] Form validated successfully — not transmitted:', data);
+
+        showStatus(
+            'success',
+            'JazakAllahu Khairan, ' + data.name + '! Your message has been recorded locally. ' +
+            'This form is not yet connected to an email service, so please also reach us ' +
+            'directly at the phone or WhatsApp numbers listed above to ensure your message is received.'
+        );
+
+        form.reset();
+    });
+})();
+</script>
+</body>
+</html>

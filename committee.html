@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Committee | J. R. P Islamic Dawat Committee</title>
+<meta name="description" content="Meet the leadership and members of J. R. P Islamic Dawat Committee — dedicated to serving the community through knowledge, dawah and beneficial activities." />
+<meta name="keywords" content="Committee members, leadership, Islamic organisation committee" />
+<meta property="og:title" content="Committee — J. R. P Islamic Dawat Committee" />
+<meta property="og:description" content="Leadership and members serving the community." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="images/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<style>
+  /* ---------- Committee Card ---------- */
+  .member-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-align: center;
+    transition: all var(--transition);
+  }
+  .member-card:hover {
+    border-color: var(--gold);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+  .member-card__photo {
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, var(--light-green), #fff);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .member-card__photo::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(11,93,59,0.1) 1px, transparent 0);
+    background-size: 18px 18px;
+    pointer-events: none;
+  }
+  .member-card__photo img {
+    width: 100%; height: 100%; object-fit: cover;
+    position: relative;
+  }
+  .member-card__photo .member-card__initials {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: var(--primary-green);
+    opacity: 0.55;
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
+  }
+  .member-card__body { padding: 22px 18px; }
+  .member-card__body h3 {
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .member-card__role {
+    color: var(--gold);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .member-card__bio {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* Highlight leadership cards */
+  .member-card--leader { border-color: rgba(201, 162, 39, 0.4); }
+  .member-card--leader .member-card__photo {
+    background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), #fff);
+  }
+
+  /* Placeholder note */
+  .placeholder-note {
+    background: var(--light-bg);
+    border: 1px dashed var(--border);
+    padding: 16px 20px;
+    border-radius: var(--radius);
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement" role="region" aria-label="Announcement">
+  Welcome to <strong>J. R. P Islamic Dawat Committee</strong> — Serving the community through knowledge, dawah and beneficial activities.
+</div>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__brand" aria-label="Home">
+      <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+      <span>
+        J. R. P Islamic Dawat Committee
+        <small>Knowledge • Dawah • Community</small>
+      </span>
+    </a>
+    <nav class="navbar__nav" id="primaryNav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="activities.html">Activities</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="resources.html">Islamic Resources</a>
+      <a href="committee.html">Committee</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <a href="contact.html" class="btn btn--primary navbar__cta">Join / Support Us</a>
+    <button class="navbar__toggle" aria-label="Toggle navigation" aria-controls="primaryNav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Our Committee</h1>
+      <p>The people serving the community behind J. R. P Islamic Dawat Committee.</p>
+      <div class="breadcrumb"><a href="index.html">Home</a> / Committee</div>
+    </div>
+  </section>
+
+  <!-- Leadership -->
+  <section class="section">
+    <div class="container">
+      <div class="placeholder-note reveal" role="note">
+        ℹ️ <strong>Placeholder notice:</strong> Names, photos and short introductions will be added once approved by the committee.
+        Until then, placeholders such as <code>[President Name]</code> are shown.
+      </div>
+
+      <div class="section-header reveal">
+        <span class="eyebrow">Leadership</span>
+        <h2>Guiding the Committee</h2>
+        <p>Serving with sincerity, responsibility and accountability.</p>
+      </div>
+
+      <div class="grid grid--4" id="leadershipGrid"></div>
+    </div>
+  </section>
+
+  <!-- Members -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Committee Members</span>
+        <h2>Working Together</h2>
+        <p>Each member contributes their time and effort for the benefit of the community.</p>
+      </div>
+
+      <div class="grid grid--3" id="membersGrid"></div>
+    </div>
+  </section>
+
+  <!-- Join CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2>Would you like to serve?</h2>
+        <p>If you would like to contribute your time, skills or effort to the committee's work, we would be honoured to hear from you.</p>
+        <div class="btn-group">
+          <a href="contact.html" class="btn btn--gold">Get in Touch</a>
+          <a href="activities.html" class="btn btn--ghost-light">See Our Activities</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">
+          <img src="images/logo.png" alt="J. R. P Islamic Dawat Committee logo" />
+          <strong>J. R. P Islamic Dawat Committee</strong>
+        </div>
+        <p>A community-oriented Islamic initiative focused on spreading authentic knowledge, encouraging good character, and serving the local Muslim community.</p>
+        <div class="footer__social">
+          <a href="[YouTube URL]" aria-label="YouTube" target="_blank" rel="noopener">▶</a>
+          <a href="[Facebook URL]" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+          <a href="[WhatsApp URL]" aria-label="WhatsApp" target="_blank" rel="noopener">✆</a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="committee.html">Committee</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Phone: [Phone Number]</li>
+          <li>Email: [Email Address]</li>
+          <li>Address: [Organization Address]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> J. R. P Islamic Dawat Committee. All Rights Reserved.</span>
+      <span>Designed &amp; Developed with care for <em>J. R. P Islamic Dawat Committee</em></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+(function () {
+  const U = window.JRPUtils;
+
+  /* Initials from "[President Name]" → "PN", or use first letters of real names */
+  function initials(name) {
+    const clean = String(name).replace(/[\[\]]/g, '').trim();
+    const parts = clean.split(/\s+/).filter(Boolean);
+    if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+    return clean.slice(0, 2).toUpperCase() || '?';
+  }
+
+  function memberCard(person, isLeader) {
+    const nameSafe = U.escape(person.name);
+    const roleSafe = U.escape(person.position);
+    const bioSafe  = U.escape(person.bio);
+    const inits    = U.escape(initials(person.name));
+    const photoAlt = `Photo of ${person.name}`;
+
+    return `
+      <article class="member-card reveal ${isLeader ? 'member-card--leader' : ''}">
+        <div class="member-card__photo">
+          <img src="${U.escape(person.image)}" alt="${U.escape(photoAlt)}" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <span class="member-card__initials" style="display:none;">${inits}</span>
+        </div>
+        <div class="member-card__body">
+          <h3>${nameSafe}</h3>
+          <span class="member-card__role">${roleSafe}</span>
+          <p class="member-card__bio">${bioSafe}</p>
+        </div>
+      </article>
+    `;
+  }
+
+  const lg = document.getElementById('leadershipGrid');
+  if (lg) lg.innerHTML = committee.leadership.map(p => memberCard(p, true)).join('');
+
+  const mg = document.getElementById('membersGrid');
+  if (mg) mg.innerHTML = committee.members.map(p => memberCard(p, false)).join('');
+
+  document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-visible');
+  });
+})();
+</script>
+</body>
+</html>
